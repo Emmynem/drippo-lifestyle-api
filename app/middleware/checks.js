@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { UnauthorizedError, ForbiddenError, SuccessResponse } from '../common/index.js';
 import db from "../models/index.js";
 import { 
-    access_granted, access_suspended, default_delete_status, sledgedrip_header_key, sledgedrip_header_token, tag_root, tag_internal_api_key
+    access_granted, access_suspended, default_delete_status, drippo_header_key, drippo_header_token, tag_root, tag_internal_api_key
 } from "../config/config.js";
 
 dotenv.config();
@@ -16,7 +16,7 @@ const USERS = db.users;
 const API_KEYS = db.api_keys;
 
 const verifyKey = (req, res, next) => {
-    const key = req.headers[sledgedrip_header_key] || req.query.key || req.body.key || '';
+    const key = req.headers[drippo_header_key] || req.query.key || req.body.key || '';
     if (!key) {
         ForbiddenError(res, "No key provided!", null);
     } else {
@@ -77,7 +77,7 @@ const isInternalKey = (req, res, next) => {
 };
 
 const verifyToken = (req, res, next) => {
-    let token = req.headers[sledgedrip_header_token] || req.query.token || req.body.token || '';
+    let token = req.headers[drippo_header_token] || req.query.token || req.body.token || '';
     if (!token) {
         ForbiddenError(res, "No token provided!", null);
     } else {
