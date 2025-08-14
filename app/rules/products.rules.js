@@ -110,7 +110,7 @@ export const product_rules = {
             .bail()
             .isInt()
             .custom(quantity => {
-                if (quantity < 1) return false;
+                if (quantity < 0) return false;
                 else return true;
             })
             .withMessage("Quantity invalid"),
@@ -195,7 +195,7 @@ export const product_rules = {
             .bail()
             .isInt()
             .custom(quantity => {
-                if (quantity < 1) return false;
+                if (quantity < 0) return false;
                 else return true;
             })
             .withMessage("Quantity invalid"),
