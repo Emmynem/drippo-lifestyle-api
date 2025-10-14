@@ -74,7 +74,7 @@ export const default_delete_status = 0;
 export const default_pending_status = 2;
 
 export const cart_checked_out = 2;
-export const max_product_price_shipping = 2500;
+export const max_product_price_shipping = 2000;
 
 export const dummy_product_image = "https://res.cloudinary.com/hydraxpress/image/upload/v1714846885/branding/nf02tjngtryzqndy3ota.jpg";
 
@@ -722,7 +722,7 @@ export const return_all_orders_table = (orders, currency) => {
 					<tr>
 						<td style="width: 150px; vertical-align: top;">
 							<img style="display: block; height: 120px; width: 120px; object-fit: cover; object-position: center;"
-								src="${orders[index].product_image}" alt="${orders[index].product_name} - Product Image">
+								src="${orders[index].product_image}" alt="${orders[index].product_name} - Product Image Text">
 						</td>
 						<td style="width: calc(100% - 150px); vertical-align: top;">
 							<p style="margin-bottom: 10px; font-size: small;">${orders[index].product_name}</p>
