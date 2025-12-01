@@ -294,7 +294,8 @@ export const transaction_types = { paid, withdrawal, deposit, refund, payment, r
 // End - Default Transaction Types
 
 // Default Currency
-export const currency = "USD"; // USD - Dollar
+// export const currency = "USD"; // USD - Dollar
+export const currency = "NGN"; // NGN - Naira
 // End - Default Currency
 
 export const app_defaults_data_type = ['STRING', 'INTEGER', 'BIGINT', 'BOOLEAN'];
