@@ -388,9 +388,25 @@ export async function publicSearchProducts(req, res) {
 								[Op.substring]: `${payload.search}`,
 							}
 						}
+					}, 
+					{
+						"$category.name$": {
+							[Op.or]: {
+								[Op.like]: `%${payload.search}`,
+								[Op.startsWith]: `${payload.search}`,
+								[Op.endsWith]: `${payload.search}`,
+								[Op.substring]: `${payload.search}`,
+							}
+						}
 					}
 				]
 			}, 
+			include: [
+				{
+					model: CATEGORIES,
+					attributes: ['unique_id', 'name', 'image', 'stripped']
+				},
+			], 
 			distinct: true,
 		});
 		const pagination = paginate(parseInt(req.query.page) || parseInt(req.body.page), parseInt(req.query.size) || parseInt(req.body.size), total_records);
@@ -401,6 +417,16 @@ export async function publicSearchProducts(req, res) {
 				[Op.or]: [
 					{
 						name: {
+							[Op.or]: {
+								[Op.like]: `%${payload.search}`,
+								[Op.startsWith]: `${payload.search}`,
+								[Op.endsWith]: `${payload.search}`,
+								[Op.substring]: `${payload.search}`,
+							}
+						}
+					}, 
+					{
+						"$category.name$": {
 							[Op.or]: {
 								[Op.like]: `%${payload.search}`,
 								[Op.startsWith]: `${payload.search}`,
